@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de_CH">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8">
@@ -140,7 +140,9 @@
             color: black;
             font-weight: 300;
             line-height: 1.4;
+
             text-align: justify;
+            word-wrap: break-word;
             hyphens: auto;
         }
 
@@ -182,6 +184,7 @@
             margin-top: 0.8rem;
             font-size: 1.1rem;
             text-shadow: 0 2px 4px rgba(72, 143, 206, 0.4);
+            max-width: 90%;
         }
 
         /* Navigation buttons */
@@ -193,7 +196,7 @@
             cursor: pointer;
             padding: 0.4rem;
             z-index: 3;
-            opacity: 0.75;
+            opacity: 0.8;
             transition: opacity 0.3s;
             background: none;
             user-select: none;
@@ -206,7 +209,9 @@
         .nav-btn img {
             width: 50px;
             height: 50px;
-            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.6));
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8));
+            pointer-events: none;
+            user-select: none;
         }
 
         .prev {
@@ -302,7 +307,7 @@
             }
 
             .text-container p {
-                line-height: 1.25;
+                line-height: 1.5;
             }
         }
 
@@ -338,7 +343,21 @@
             }
 
             .content-container {
-                margin: 3.5%
+                margin: 3.5%;
+            }
+
+            .next {
+                scale: 0.75;
+                transform: translateX(30%);
+            }
+
+            .prev {
+                scale: 0.75;
+                transform: translateX(-30%);
+            }
+
+            .nav-btn {
+                top: 40%;
             }
         }
     </style>
@@ -406,9 +425,9 @@
             <div class="text-container">
                 <div>
                     <p><b>KantiTools</b> erleichtert Dir deinen Schulalltag mit vielen nützlichen Funktionen!</p>
-                    <p>Der <b>Menüplan</b> kann direkt von der App aus geöffnet werden. Ebenfalls kann man sich mit seinem <b>Schulnetz-Konto</b> anmelden und alle Noten direkt einsehen. Zusätzlich werden <b>zwei Notenrechner</b> angeboten und <b>Notizen</b> können notiert werden.</p>
-                    <p>Die App unterstützt <b>über 5 Sprachen</b>, einen <b>Dunkelmodus</b> und <b>Akzentfarben</b>!</p>
-                    <p>Der ganze <b>Quellcode</b> ist auf GitHub frei verfügbar und einsehbar. Downloads sind für Android bereitgestellt, iOS-Unterstützung wird derzeigt nicht angeboten.</p>
+                    <p>Der <b>🍽️Menüplan</b> kann direkt von der App aus geöffnet werden. Ebenfalls kann man sich mit seinem <b>👤Schulnetz-Konto</b> anmelden und alle Noten direkt einsehen. Zusätzlich werden <b>🧮zwei Notenrechner</b> angeboten und <b>📔Notizen</b> können notiert werden.</p>
+                    <p>Die App unterstützt <b>🌍über 5 Sprachen</b>, einen <b>🌚Dunkelmodus</b> und <b>🎨Akzentfarben</b>!</p>
+                    <p>Der ganze <b>👨‍💻Quellcode</b> ist auf GitHub frei verfügbar und einsehbar. Downloads sind für Android bereitgestellt, iOS-Unterstützung wird derzeigt nicht angeboten.</p>
                 </div>
                 <div class="button-container">
                     <a href="https://github.com/explo-gr/KantiTools/releases/download/v1.0.1-Matura/KantiTools_v1.0.1.apk"
