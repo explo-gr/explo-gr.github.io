@@ -108,6 +108,8 @@
 
         /* Slides stacked on top of each other */
         .slide {
+            perspective: 100px;
+            transform-origin: 15% 50%;
             position: absolute;
             top: 0;
             left: 0;
@@ -116,14 +118,16 @@
             justify-content: center;
             align-items: center;
             opacity: 0;
-            transition: opacity 0.8s ease;
+            transition: all 0.8s ease;
             user-select: none;
             filter: drop-shadow(0 6px 9px rgba(0, 0, 0, 0.3));
+            transform: rotateY(50deg) scale(0.9);
         }
 
         .slide.active {
             opacity: 1;
             z-index: 2;
+            transform: rotateY(0deg) scale(1.0);
         }
 
         .slide img {
@@ -196,8 +200,8 @@
             cursor: pointer;
             padding: 0.4rem;
             z-index: 3;
-            opacity: 0.8;
-            transition: opacity 0.3s;
+            opacity: 0.75;
+            transition: all 0.3s;
             background: none;
             user-select: none;
             outline: none;
@@ -205,6 +209,8 @@
 
         .nav-btn:hover {
             opacity: 1.0;
+            scale: 1.1;
+            transform: translateY(-45%);
         }
 
         .nav-btn img {
@@ -425,10 +431,10 @@
             <!-- Text + download section -->
             <div class="text-container">
                 <div>
-                    <p><b>KantiTools</b> erleichtert Dir deinen Schulalltag mit vielen nützlichen Funktionen!</p>
+                    <p><b>🎓KantiTools</b> erleichtert Dir deinen Schulalltag mit vielen nützlichen Funktionen!</p>
                     <p>Der <b>🍽️Menüplan</b> kann direkt von der App aus geöffnet werden. Ebenfalls kann man sich mit seinem <b>👤Schulnetz-Konto</b> anmelden und alle Noten direkt einsehen. Zusätzlich werden <b>🧮zwei Notenrechner</b> angeboten und <b>📔Notizen</b> können notiert werden.</p>
                     <p>Die App unterstützt <b>🌍über 5 Sprachen</b>, einen <b>🌚Dunkelmodus</b> und <b>🎨Akzentfarben</b>!</p>
-                    <p>Der ganze <b>👨‍💻Quellcode</b> ist auf GitHub frei verfügbar und einsehbar. Downloads sind für Android bereitgestellt, iOS-Unterstützung wird derzeigt nicht angeboten.</p>
+                    <p>Der ganze <b>👨‍💻Quellcode</b> ist auf GitHub frei verfügbar und einsehbar. Downloads sind für Android bereitgestellt, iOS-Unterstützung wird derzeit nicht angeboten.</p>
                 </div>
                 <div class="button-container">
                     <a href="https://github.com/explo-gr/KantiTools/releases/download/v1.0.1-Matura/KantiTools_v1.0.1.apk"
