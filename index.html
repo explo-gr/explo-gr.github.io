@@ -121,13 +121,17 @@
             transition: all 0.8s ease;
             user-select: none;
             filter: drop-shadow(0 6px 9px rgba(0, 0, 0, 0.3));
-            transform: rotateY(50deg) scale(0.9);
+            rotate: y 50deg;
+            scale: 0.8;
+            /* transform: rotateY(50deg) scale(0.9); */
         }
 
         .slide.active {
             opacity: 1;
             z-index: 2;
-            transform: rotateY(0deg) scale(1.0);
+            /* transform: rotateY(0deg) scale(1.0); */
+            rotate: y 0deg;
+            scale: 1.0;
         }
 
         .slide img {
@@ -194,8 +198,7 @@
         /* Navigation buttons */
         .nav-btn {
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 50%; /* relative to slider-wrapper now */
             border: none;
             cursor: pointer;
             padding: 0.4rem;
@@ -205,12 +208,12 @@
             background: none;
             user-select: none;
             outline: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .nav-btn:hover {
             opacity: 1.0;
             scale: 1.1;
-            translate: inherit -45%;
         }
 
         .nav-btn img {
@@ -242,9 +245,11 @@
             width: 12px;
             height: 12px;
             background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 2px 8px rgba(72, 143, 206, 0.2);
             border-radius: 50%;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s linear;
+            transform-origin: center;
             transform: scale(0.95);
         }
 
@@ -265,6 +270,7 @@
         .button-container a {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             text-decoration: none;
             padding: 0.8rem 1.5rem;
@@ -355,12 +361,12 @@
 
             .next {
                 scale: 0.75;
-                transform: translateX(30%);
+                translate: 30%;
             }
 
             .prev {
                 scale: 0.75;
-                transform: translateX(-30%);
+                translate: -30%;
             }
 
             .nav-btn {
@@ -416,15 +422,15 @@
                     <div class="slide">
                         <img src="./images/Screenshot 10.jpg" alt="Screenshot 10">
                     </div>
-                </div>
 
-                <!-- Navigation buttons -->
-                <button class="nav-btn prev">
-                    <img src="./icons/chevron-left.svg" alt="Previous">
-                </button>
-                <button class="nav-btn next">
-                    <img src="./icons/chevron-right.svg" alt="Next">
-                </button>
+                    <!-- Navigation buttons now inside slider-wrapper -->
+                    <button class="nav-btn prev">
+                        <img src="./icons/chevron-left.svg" alt="Previous">
+                    </button>
+                    <button class="nav-btn next">
+                        <img src="./icons/chevron-right.svg" alt="Next">
+                    </button>
+                </div>
 
                 <!-- Info text -->
                 <div class="slide-info" id="slide-info"></div>
@@ -503,7 +509,7 @@
             current = (index + slides.length) % slides.length;
             slides[current].classList.add('active');
             dots[current].classList.add('active');
-            setTimeout(() => slideInfo.textContent =  captions[current], 100); // sync with animation
+            setTimeout(() => slideInfo.textContent = captions[current], 100); // sync with animation
             updateSliderHeight();
         }
 
@@ -540,9 +546,7 @@
         };
 
         // Attach debounced listener
-        document.addEventListener("mousemove", debounce(handleMouseMove, 25));
-
-
+        document.addEventListener("mousemove", debounce(handleMouseMove, 50));
     </script>
 </body>
 
