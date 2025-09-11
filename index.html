@@ -258,6 +258,11 @@
             transform: scale(1.15);
         }
 
+        #update-status {
+            font-style: italic;
+            font-size: 1rem;
+        }
+
         /* Buttons under text/slider */
         .button-container {
             display: flex;
@@ -361,12 +366,12 @@
 
             .next {
                 scale: 0.75;
-                translate: 30%;
+                translate: 27.5%;
             }
 
             .prev {
                 scale: 0.75;
-                translate: -30%;
+                translate: -27.5%;
             }
 
             .nav-btn {
@@ -446,9 +451,10 @@
                     <p>Der <b>🍽️Menüplan</b> kann direkt von der App aus geöffnet werden. Ebenfalls kann man sich mit seinem <b>👤Schulnetz-Konto</b> anmelden und alle Noten direkt einsehen. Zusätzlich werden <b>🧮zwei Notenrechner</b> angeboten und <b>📔Notizen</b> können notiert werden.</p>
                     <p>Die App unterstützt <b>🌍über 5 Sprachen</b>, einen <b>🌚Dunkelmodus</b> und <b>🎨Akzentfarben</b>!</p>
                     <p>Der ganze <b>👨‍💻Quellcode</b> ist auf GitHub frei verfügbar und einsehbar. Downloads sind für Android bereitgestellt, iOS-Unterstützung wird derzeit nicht angeboten.</p>
+                    <p id="update-status"></p>
                 </div>
                 <div class="button-container">
-                    <a href="https://github.com/explo-gr/KantiTools/releases/download/v1.0.1-Matura/KantiTools_v1.0.1.apk"
+                    <a href="https://github.com/explo-gr/KantiTools/releases/download/v1.1.2-Stable/KantiTools_v1.1.2.apk"
                         download class="button-download">
                         <img src="./icons/download.svg" alt="Download Icon"> Download (Android)
                     </a>
@@ -461,12 +467,16 @@
     </div>
 
     <script>
+        const RELEASE_DATE = '9.7.2025';
+        const LATEST_VERSION = 'v1.1.2';
+
         const slides = document.querySelectorAll('.slide');
         const prevBtn = document.querySelector('.prev');
         const nextBtn = document.querySelector('.next');
         const dotsContainer = document.querySelector('.dots');
         const wrapper = document.querySelector('.slider-wrapper');
         const slideInfo = document.getElementById('slide-info');
+        const updateStatus = document.getElementById('update-status');
 
         let current = 0;
         let autoPlay = true;
@@ -546,7 +556,29 @@
         };
 
         // Attach debounced listener
-        document.addEventListener("mousemove", debounce(handleMouseMove, 50));
+        document.addEventListener("mousemove", debounce(handleMouseMove, 75));
+
+
+        // current ver <--> released vor x täg
+        const date1 = new Date();
+        const date2 = new Date(RELEASE_DATE);
+        const diffTime = Math.abs(date2 - date1);
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); 
+
+        let statusText;
+        switch (diffDays) {
+            case 0:
+                statusText = `Neuster Release: ${LATEST_VERSION}, heute veröffentlicht`;
+                break;
+            case 1:
+                statusText = `Neuster Release: ${LATEST_VERSION}, gestern veröffentlicht`
+                break;
+            default:
+                statusText = `Neuster Release: ${LATEST_VERSION} vor ${diffDays} Tagen`;
+        }
+        
+        updateStatus.innerText = statusText;
+            
     </script>
 </body>
 
